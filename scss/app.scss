@@ -1,0 +1,19 @@
+@charset 'utf-8';
+
+@import 'settings';
+@import 'foundation';
+
+/* Foundation Styles */
+@include foundation-global-styles;             // Required for Aurora
+@include foundation-grid;
+@include foundation-menu;
+// @include foundation-responsive-embed;
+// @include foundation-top-bar;
+// @include foundation-visibility-classes;
+
+/* Motion UI */
+// @import 'motion-ui';
+// @include motion-ui-transitions;
+
+/* Custom Styles */
+@import "aurora-chat";                           // Required for Aurora

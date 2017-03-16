@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Chat</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <ul class="menu">
+        <li class="menu-text">Aurora</li>
+        <li><a href="#" onclick="startConversation('homepage', 1);">Homepage Chat</a></li>
+        <li><a href="#" onclick="startConversation('creditBuilder', 1);">Credit Builder Chat</a></li>
+    </ul>
+
+    <!-- Aurora Chat -->
+    <div class="row" id="aurora-chat-wrapper">
+
+        <!-- Chats -->
+        <div id="chat-container"></div>
+
+        <!-- User input -->
+        <div id="input"></div>
+
+        <!-- User choices -->
+        <div id="choices"></div>
+
+    </div>
+    <!-- /Aurora Chat -->
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
+    <script src="bower_components/motion-ui/dist/motion-ui.js"></script>
+
+    <script src="js/async.js"></script>
+    <script src="js/app.js"></script>
+
+    <script type="text/javascript">
+        /*
+        ---------------
+        Init Aurora Chat Conversation
+        ---------------
+        */
+
+        $(function() {
+            startConversation('creditBuilder', 1);
+        });
+
+    </script>
+
+</body>
+</html>

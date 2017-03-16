@@ -1,0 +1,171 @@
+// Global
+// ---------
+$chat-wrapper-width: 100%;
+$chat-wrapper-max-width: 960px;
+$chat-wrapper-margin: 30px auto;
+$chat-font-size: rem-calc(17);
+$chat-link-color: #158db8;
+
+// User
+// ---------
+
+// User Response
+$user-bubble-bg: #158db8;
+$user-bubble-text-color: #fff;
+
+// User Choice
+$user-choice-bg: none;
+$user-choice-text-color: #158db8;
+$user-choice-border: 2px solid #158db8;
+
+// Bot
+// ---------
+
+// Bot Response
+$bot-bubble-bg: #e6e6e6;
+$bot-bubble-text-color: #000;
+
+// Bot Typing Dots
+$dot-bubble-height: 40px;
+$dot-animation-speed: 1300ms;
+$dot-size: 8px;
+$dot-color: #000;
+$dot-margin: 8px 2px;
+
+
+#aurora-chat-wrapper   {
+    width: $chat-wrapper-width;
+    max-width: $chat-wrapper-max-width;
+    margin: $chat-wrapper-margin;
+    font-size: $chat-font-size;
+    text-align: left;
+    overflow: hidden;
+    height: 100%;
+
+    .chat-bubble {
+        background: $bot-bubble-bg;
+        color: $bot-bubble-text-color;
+        margin: 0 0 0.5em;
+        border-radius: 0.5em;
+        padding: 1em 1.5em;
+        max-width: 75%;
+        clear: both;
+        position: relative;
+        float: left;
+
+        &.user {
+            background: $user-bubble-bg;
+            color: $user-bubble-text-color;
+            float: right;
+        }
+
+        a {
+            color: $chat-link-color;
+            text-decoration: underline;
+        }
+    }
+
+    #choices {
+
+        .chat-bubble {
+            background: $user-choice-bg;
+            color: $user-choice-text-color;
+            border: $user-choice-border;
+            cursor: pointer;
+            animation: fadeInGrownIn 0.5s ease; // Fade & Grow in
+
+            &:hover {
+                background: $user-bubble-bg;
+                color: $user-bubble-text-color;
+                transition: all 0.3s ease; // Ease in background color
+            }
+
+        }
+    }
+
+    #input {
+        animation: fadeInGrownIn 0.5s ease; // Fade & Grow in
+
+        input {
+            border: none;
+            border-style: solid;
+            border-width: 0px 0px 1px 0px;
+            border-color: #fff;
+            color: #fff;
+            background: none;
+            box-shadow: none;
+            margin-right: 12px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &::-webkit-input-placeholder { color: #fff; } // Chrome/Opera/Safari
+            &:-ms-input-placeholder { color: #fff; }      // IE 10+
+            &::-moz-placeholder { color: #fff; }          // Firefox 19+
+            &:-moz-placeholder { color: #fff; }           // Firefox 18-
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+
+    #typing {
+        min-height: $dot-bubble-height;
+        animation: fadeInGrownIn 0.5s ease; // Fade & Grow in
+
+        .dot {
+        	width: $dot-size;
+        	height: $dot-size;
+        	background-color: $dot-color;
+            margin: $dot-margin;
+        	border-radius: 50%;
+        	float: left;
+        	transform: scale(0);
+
+            @mixin animation($delay: 0ms) {
+            	animation: typing $dot-animation-speed ease infinite $delay;
+            }
+
+        	@include animation();
+
+        	&:nth-child(2) {
+        		@include animation($dot-animation-speed * 0.2);
+        	}
+
+        	&:nth-child(3) {
+        		@include animation($dot-animation-speed * 0.4);
+        	}
+        }
+    }
+}
+
+// Animations
+// ---------
+
+// Fade & Grow In
+@keyframes fadeInGrownIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// Typing
+@keyframes typing {
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
